@@ -7,6 +7,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { AuthenticateUserUseCase, ISubmitLogInDTO } from "@/domain";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { HttpError } from "@/infra";
+import { toast } from "react-toastify";
 
 type Props = {
   authenticateUserUseCase: AuthenticateUserUseCase;
@@ -39,8 +41,19 @@ export function useLoginPageForm({ authenticateUserUseCase }: Props) {
       if (result) {
         router.replace("/");
       }
-    } catch {
-      // TODO: handle error (show a toast)
+    } catch (error) {
+      if (error instanceof HttpError) {
+        const isBadCredentialsError =
+          error.data?.error_description === "Bad credentials";
+        if (isBadCredentialsError) {
+          toast("Incorrect username or password", { type: "error" });
+          return;
+        }
+      }
+
+      toast("An error occurred while trying to sign in, please try again.", {
+        type: "error",
+      });
     } finally {
       setIsAuthenticating(false);
     }
