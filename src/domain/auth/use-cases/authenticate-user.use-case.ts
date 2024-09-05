@@ -1,6 +1,5 @@
-import { HttpClient, httpClientFactory, requestURL } from "@/infra";
-import { IAuthenticationResponseDTO, ISubmitLogInDTO } from "../dtos";
-import { AuthenticationResponse } from "../models/authentication-response.model";
+import { HttpClient, httpClientFactory, localRequestURL } from "@/infra";
+import { ISubmitLogInDTO } from "../dtos";
 
 type AuthenticateUserUseCaseData = Pick<
   ISubmitLogInDTO,
@@ -8,9 +7,7 @@ type AuthenticateUserUseCaseData = Pick<
 >;
 
 export interface AuthenticateUserUseCase {
-  execute: (
-    data: AuthenticateUserUseCaseData
-  ) => Promise<AuthenticationResponse>;
+  execute: (data: AuthenticateUserUseCaseData) => Promise<boolean>;
 }
 
 export class AuthenticateUserUseCaseImpl implements AuthenticateUserUseCase {
@@ -23,11 +20,11 @@ export class AuthenticateUserUseCaseImpl implements AuthenticateUserUseCase {
       scope: "web",
     };
 
-    const response = await this.httpClient.request<IAuthenticationResponseDTO>({
-      url: requestURL.authenticateUser,
+    const response = await this.httpClient.request<boolean>({
+      url: localRequestURL.authenticateUser,
       method: "post",
       body: requestBody,
     });
-    return AuthenticationResponse.fromDTO(response.data);
+    return response.data;
   };
 }
