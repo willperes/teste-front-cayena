@@ -1,0 +1,19 @@
+.button {
+  height: 40px;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: var(--border-radius-4);
+
+  font-weight: 700;
+}
+
+.button--primary {
+  background-color: var(--button-primary);
+  color: var(--button-text);
+
+  @extend .text--sm;
+}

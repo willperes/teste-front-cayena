@@ -1,0 +1,17 @@
+.form {
+  display: flex;
+  flex-direction: column;
+
+  gap: var(--space-12);
+
+  &__button-box {
+    margin-top: var(--space-8);
+
+    @include md {
+      margin-top: var(--space-16);
+
+      width: 40%;
+      align-self: flex-end;
+    }
+  }
+}

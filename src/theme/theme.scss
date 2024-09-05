@@ -1,0 +1,16 @@
+@import "./colors.scss";
+
+@mixin theme-colors {
+  --main-background: #{$light-main-background};
+  --card-background: #{$light-card-background};
+
+  --text-primary: #{$light-text-primary};
+
+  --button-primary: #{$primary};
+  --button-text: #ffffff;
+
+  --input-background: #{$light-input-background};
+  --input-border: #{$light-input-border};
+
+  --error: #{$error};
+}
