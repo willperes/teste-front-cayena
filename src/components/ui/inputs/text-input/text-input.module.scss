@@ -1,4 +1,11 @@
-.input {
+.box {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.box__input {
   background-color: var(--input-background);
   height: 40px;
   width: 100%;
@@ -11,8 +18,19 @@
   padding: 0 var(--space-12) 0 var(--space-12);
 }
 
-.input--error {
+.box__input--error {
   border: 2px solid var(--error);
+}
+
+.box__input--trailing-component {
+  padding-right: var(--space-32);
+}
+
+.box__trailing-component {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  right: var(--space-8);
 }
 
 .label {

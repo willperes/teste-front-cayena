@@ -6,6 +6,7 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import { AuthenticateUserUseCase, ISubmitLogInDTO } from "@/domain";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 type Props = {
   authenticateUserUseCase: AuthenticateUserUseCase;
@@ -14,9 +15,15 @@ type Props = {
 export function useLoginPageForm({ authenticateUserUseCase }: Props) {
   const router = useRouter();
 
+  const [isAuthenticating, setIsAuthenticating] = useState(false);
+
   const { control, handleSubmit } = useForm<ILogInFormModel>({
     mode: "onChange",
     resolver: zodResolver(LogInFormModel),
+    defaultValues: {
+      username: "",
+      password: "",
+    },
   });
 
   async function handleSubmitForm(formValues: ILogInFormModel) {
@@ -26,17 +33,22 @@ export function useLoginPageForm({ authenticateUserUseCase }: Props) {
     };
 
     try {
+      setIsAuthenticating(true);
+
       const result = await authenticateUserUseCase.execute(data);
       if (result) {
         router.replace("/");
       }
     } catch {
       // TODO: handle error (show a toast)
+    } finally {
+      setIsAuthenticating(false);
     }
   }
 
   return {
     control,
+    isAuthenticating,
     onFormSubmit: handleSubmit(handleSubmitForm),
   };
 }

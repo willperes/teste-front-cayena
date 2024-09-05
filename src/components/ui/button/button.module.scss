@@ -9,6 +9,10 @@
   border-radius: var(--border-radius-4);
 
   font-weight: 700;
+
+  &:hover {
+    filter: brightness(0.9);
+  }
 }
 
 .button--primary {
@@ -16,4 +20,9 @@
   color: var(--button-text);
 
   @extend .text--sm;
+}
+
+.button--disabled {
+  background-color: var(--button-disabled-background);
+  color: var(--button-disabled-text);
 }

@@ -3,6 +3,7 @@
 @mixin theme-colors {
   --main-background: #{$light-main-background};
   --card-background: #{$light-card-background};
+  --background-contrast: #{$light-background-contrast};
 
   --text-primary: #{$light-text-primary};
 
@@ -11,6 +12,9 @@
 
   --input-background: #{$light-input-background};
   --input-border: #{$light-input-border};
+
+  --button-disabled-background: #{$light-button-disabled-background};
+  --button-disabled-text: #{$light-button-disabled-text};
 
   --error: #{$error};
 }

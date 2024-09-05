@@ -7,6 +7,7 @@ export type TextInputProps = {
   label?: string;
   required?: boolean;
   errorMessage?: string;
+  TrailingComponent?: React.ReactElement;
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
 export function TextInput({
@@ -14,14 +15,16 @@ export function TextInput({
   id,
   required,
   errorMessage,
+  TrailingComponent,
   ...inputProps
 }: TextInputProps) {
   const _randomID = useId();
   const _id = useRef(id ?? _randomID).current;
 
   const inputClasses = [
-    styles.input,
-    errorMessage ? styles["input--error"] : "",
+    styles["box__input"],
+    errorMessage ? styles["box__input--error"] : "",
+    TrailingComponent ? styles["box__input--trailing-component"] : "",
   ];
 
   return (
@@ -34,7 +37,14 @@ export function TextInput({
           ) : null}
         </label>
       ) : null}
-      <input id={_id} {...inputProps} className={inputClasses.join(" ")} />
+      <div className={styles.box}>
+        <input id={_id} {...inputProps} className={inputClasses.join(" ")} />
+        {TrailingComponent ? (
+          <div className={styles["box__trailing-component"]}>
+            {TrailingComponent}
+          </div>
+        ) : null}
+      </div>
       {errorMessage ? (
         <span className={styles["error-message"]}>{errorMessage}</span>
       ) : null}
