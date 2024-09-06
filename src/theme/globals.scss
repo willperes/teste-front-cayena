@@ -38,6 +38,7 @@ body {
 
 #__next {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   width: 100%;
 }
@@ -51,8 +52,6 @@ main {
 
   width: 100%;
   max-width: #{$screen-content-max-width};
-
-  min-height: 100%;
 }
 
 *,
