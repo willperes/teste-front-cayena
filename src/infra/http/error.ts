@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export abstract class Error {
   statusCode: number;
   data: any;

@@ -10,6 +10,7 @@ type HandleErrorArgs = {
 export function useHandleError() {
   const router = useRouter();
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleError = useCallback((error: any, args?: HandleErrorArgs) => {
     let shouldRedirect = false;
     if (error instanceof HttpError) {
