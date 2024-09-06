@@ -21,6 +21,7 @@
       "@/hooks": ["./src/hooks"],
       "@/infra": ["./src/infra"],
       "@/pages": ["./src/pages"],
+      "@/providers": ["./src/providers"],
       "@/theme": ["./src/theme"],
       "@/utils": ["./src/utils"]
     }

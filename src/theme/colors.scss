@@ -5,18 +5,21 @@ $error: #ea3838;
 $light-main-background: #ffffff;
 $light-secondary-background: #dddddd;
 $light-background-contrast: #363636;
-
 $light-card-background: #f6f6f6;
-
-// Typography colors
-
 $light-text-primary: #252525;
-
-// Input colors
-
 $light-input-background: #ffffff;
 $light-input-border: #d9d9d9;
-
-// Button colors
 $light-button-disabled-background: #d5d5d5;
 $light-button-disabled-text: #959595;
+
+// Dark theme colors
+
+$dark-main-background: #151515;
+$dark-secondary-background: #353535;
+$dark-background-contrast: #c5c5c5;
+$dark-card-background: #1f1f1f;
+$dark-text-primary: #e5e5e5;
+$dark-input-background: #151515;
+$dark-input-border: #454545;
+$dark-button-disabled-background: #353535;
+$dark-button-disabled-text: #959595;

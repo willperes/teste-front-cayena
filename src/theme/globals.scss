@@ -18,9 +18,54 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  @include theme-colors;
   @include spacings;
   @include border-radius;
+
+  --primary: #{$primary};
+
+  --main-background: #{$light-main-background};
+  --secondary-background: #{$light-secondary-background};
+  --card-background: #{$light-card-background};
+  --background-contrast: #{$light-background-contrast};
+
+  --text-primary: #{$light-text-primary};
+
+  --button-primary: #{$primary};
+  --button-text: #ffffff;
+
+  --input-background: #{$light-input-background};
+  --input-border: #{$light-input-border};
+
+  --button-disabled-background: #{$light-button-disabled-background};
+  --button-disabled-text: #{$light-button-disabled-text};
+
+  --divider-background: #{$light-input-border};
+
+  --error: #{$error};
+
+  &.dark-mode {
+    --primary: #{$primary};
+
+    --main-background: #{$dark-main-background};
+    --secondary-background: #{$dark-secondary-background};
+    --card-background: #{$dark-card-background};
+    --background-contrast: #{$dark-background-contrast};
+
+    --text-primary: #{$dark-text-primary};
+
+    --button-primary: #{$primary};
+    --button-text: #ffffff;
+
+    --input-background: #{$dark-input-background};
+    --input-border: #{$dark-input-border};
+
+    --button-disabled-background: #{$dark-button-disabled-background};
+    --button-disabled-text: #{$dark-button-disabled-text};
+
+    --divider-background: #{$dark-input-border};
+
+    --error: #{$error};
+  }
 }
 
 html {

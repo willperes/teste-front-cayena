@@ -1,4 +1,4 @@
-import { EyeOnIcon, EyeOffIcon } from "@/assets";
+import { EyeOnIcon, EyeOffIcon, SunIcon, MoonIcon } from "@/assets";
 
 export type BaseIconProps = {
   size?: number;
@@ -21,6 +21,8 @@ export function Icon({ name, size, ...svgProps }: IconProps) {
 const iconRegistry = {
   eyeOnIcon: EyeOnIcon,
   eyeOffIcon: EyeOffIcon,
+  sunIcon: SunIcon,
+  moonIcon: MoonIcon,
 };
 
 type IconType = typeof iconRegistry;

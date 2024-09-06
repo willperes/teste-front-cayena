@@ -16,3 +16,21 @@
     align-items: center;
   }
 }
+
+.container__header-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container__trailing-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-16);
+}
+
+.text {
+  @include text-primary;
+}
