@@ -35,6 +35,7 @@ export function SupplierListMobileItem({
 
       <div className={styles["container__button-box"]}>
         <Button
+          data-testid={"supplier-list-mobile-item__edit-button"}
           title={"Edit"}
           onClick={() => navigateToEditSupplier(supplier.id)}
         />

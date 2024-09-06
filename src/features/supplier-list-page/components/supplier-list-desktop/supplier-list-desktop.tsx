@@ -26,6 +26,7 @@ export function SupplierListDesktop({
                   <td>{supplier.owner}</td>
                   <td>
                     <Button
+                      data-testid={"supplier-list-mobile-item__edit-button"}
                       title={"Edit"}
                       onClick={() => navigateToEditSupplier(supplier.id)}
                     />
