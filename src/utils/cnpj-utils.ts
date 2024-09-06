@@ -1,7 +1,8 @@
 import { isValidCNPJ, formatCNPJ } from "@brazilian-utils/brazilian-utils";
+import { extractDigits } from "./extract-digits";
 
 function removeFormatting(cpfCnpj: string): string {
-  return cpfCnpj.replace(/\D/g, "");
+  return extractDigits(cpfCnpj);
 }
 
 function validate(cnpj: string): boolean {
@@ -9,8 +10,7 @@ function validate(cnpj: string): boolean {
 }
 
 function format(cnpj: string): string {
-  const cnpjWithoutFormatting = removeFormatting(cnpj);
-  return formatCNPJ(cnpj);
+  return formatCNPJ(removeFormatting(cnpj));
 }
 
 export const cnpjUtils = {
