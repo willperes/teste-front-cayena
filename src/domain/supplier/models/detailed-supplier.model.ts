@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-namespace */
+import { cnpjUtils, phoneNumberUtils } from "@/utils";
 import { DetailedSupplierDTO } from "../dtos/detailed-supplier.dto";
-import { formatSupplierCNPJ } from "../utils/format-supplier-cnpj";
 import { SupplierAddress } from "./supplier-address.model";
 import { SupplierInformation } from "./supplier-information.model";
 import { SupplierOwner } from "./supplier-owner.model";
@@ -14,8 +14,8 @@ export namespace DetailedSupplier {
   export function fromDTO(dto: DetailedSupplierDTO): DetailedSupplier {
     return {
       name: dto.name,
-      cnpj: formatSupplierCNPJ(dto.cnpj),
-      phoneNumber: dto.phoneNumber,
+      cnpj: cnpjUtils.format(dto.cnpj),
+      phoneNumber: phoneNumberUtils.format(dto.phoneNumber),
       address: {
         zipCode: dto.zipCode,
         street: dto.address,

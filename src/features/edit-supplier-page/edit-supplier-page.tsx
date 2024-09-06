@@ -14,14 +14,17 @@ export function EditSupplierPage({
   supplierID,
   getSupplierByIdUseCase = new GetSupplierByIdUseCaseImpl(),
 }: Props) {
-  const {} = useEditSupplierPage({ getSupplierByIdUseCase, supplierID });
+  const { supplierData } = useEditSupplierPage({
+    getSupplierByIdUseCase,
+    supplierID,
+  });
 
   return (
     <>
       <PageHeader title={"Edit Supplier"} />
       <PageBox>
         <CardBox>
-          <EditSupplierForm />
+          <EditSupplierForm supplier={supplierData} />
         </CardBox>
       </PageBox>
     </>

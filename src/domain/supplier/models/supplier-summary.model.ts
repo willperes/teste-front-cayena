@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-namespace */
+import { cnpjUtils, phoneNumberUtils } from "@/utils";
 import { SupplierSummaryDTO } from "../dtos/supplier-summary.dto";
-import { formatSupplierCNPJ } from "../utils/format-supplier-cnpj";
 
 export type SupplierSummary = {
   id: string;
@@ -15,8 +15,8 @@ export namespace SupplierSummary {
     return {
       id: dto.publicId,
       name: dto.name,
-      cnpj: formatSupplierCNPJ(dto.cnpj),
-      phoneNumber: dto.phoneNumber,
+      cnpj: cnpjUtils.format(dto.cnpj),
+      phoneNumber: phoneNumberUtils.format(dto.phoneNumber),
       owner: dto.ownerName,
     };
   }
