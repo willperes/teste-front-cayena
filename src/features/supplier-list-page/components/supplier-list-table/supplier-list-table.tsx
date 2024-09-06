@@ -10,7 +10,9 @@ type Props = {
 export function SupplierListTable({
   getSupplierListUseCase = new GetSupplierListUseCaseImpl(),
 }: Props) {
-  const { supplierList } = useSupplierListTable({ getSupplierListUseCase });
+  const { supplierList, navigateToEditSupplier } = useSupplierListTable({
+    getSupplierListUseCase,
+  });
 
   return (
     <div>
@@ -24,13 +26,16 @@ export function SupplierListTable({
             <th style={{ minWidth: 100 }}>Edit</th>
           </tr>
           {supplierList.map((supplier) => (
-            <tr>
+            <tr key={supplier.id}>
               <td>{supplier.name}</td>
               <td>{supplier.cnpj}</td>
               <td>{supplier.phoneNumber}</td>
               <td>{supplier.owner}</td>
               <td>
-                <Button title={"Edit"} />
+                <Button
+                  title={"Edit"}
+                  onClick={() => navigateToEditSupplier(supplier.id)}
+                />
               </td>
             </tr>
           ))}

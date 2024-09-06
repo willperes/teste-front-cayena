@@ -1,3 +1,10 @@
 .container {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+
+  max-width: #{$screen-content-max-width};
+  width: 100%;
+
   padding: var(--space-16);
 }

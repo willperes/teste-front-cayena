@@ -1,7 +1,15 @@
-import { SupplierListPage } from "@/features";
+import { EditSupplierPage } from "@/features";
 import Head from "next/head";
+import { useRouter } from "next/router";
 
-export default function SupplierList() {
+export default function EditSupplier() {
+  const { query } = useRouter();
+
+  const supplierId = query.id;
+  if (typeof supplierId !== "string") {
+    return <div></div>;
+  }
+
   return (
     <>
       <Head>
@@ -10,7 +18,7 @@ export default function SupplierList() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <SupplierListPage />
+      <EditSupplierPage supplierID={supplierId} />
     </>
   );
 }
