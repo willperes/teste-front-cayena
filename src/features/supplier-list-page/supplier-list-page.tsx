@@ -1,3 +1,5 @@
+"use client";
+
 import { CardBox, PageBox } from "@/components";
 import { SupplierListTable } from "./components/supplier-list-table/supplier-list-table";
 

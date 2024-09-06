@@ -1,5 +1,7 @@
+import styles from "./supplier-list-table.module.scss";
 import { GetSupplierListUseCase, GetSupplierListUseCaseImpl } from "@/domain";
 import { useSupplierListTable } from "./use-supplier-list-table";
+import { Button } from "@/components";
 
 type Props = {
   getSupplierListUseCase?: GetSupplierListUseCase;
@@ -10,5 +12,30 @@ export function SupplierListTable({
 }: Props) {
   const { supplierList } = useSupplierListTable({ getSupplierListUseCase });
 
-  return <div></div>;
+  return (
+    <div>
+      <table className={styles.table}>
+        <tbody>
+          <tr>
+            <th style={{ width: "30%" }}>Name</th>
+            <th style={{ width: "20%" }}>CNPJ</th>
+            <th style={{ width: "20%" }}>Phone Number</th>
+            <th style={{ width: "20%" }}>Owner</th>
+            <th style={{ minWidth: 100 }}>Edit</th>
+          </tr>
+          {supplierList.map((supplier) => (
+            <tr>
+              <td>{supplier.name}</td>
+              <td>{supplier.cnpj}</td>
+              <td>{supplier.phoneNumber}</td>
+              <td>{supplier.owner}</td>
+              <td>
+                <Button title={"Edit"} />
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
 }

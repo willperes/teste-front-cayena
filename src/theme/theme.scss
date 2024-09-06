@@ -2,6 +2,7 @@
 
 @mixin theme-colors {
   --main-background: #{$light-main-background};
+  --secondary-background: #{$light-secondary-background};
   --card-background: #{$light-card-background};
   --background-contrast: #{$light-background-contrast};
 

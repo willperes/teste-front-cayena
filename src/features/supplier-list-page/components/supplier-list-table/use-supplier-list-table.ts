@@ -12,7 +12,7 @@ export function useSupplierListTable({ getSupplierListUseCase }: Props) {
   async function init() {
     try {
       const suppliers = await getSupplierListUseCase.execute();
-      console.log("suppliers", suppliers);
+      setSupplierList(suppliers);
     } catch {
       // TODO: handle error
     }
@@ -20,7 +20,7 @@ export function useSupplierListTable({ getSupplierListUseCase }: Props) {
 
   useEffect(() => {
     init();
-  }, [init]);
+  }, []);
 
   return { supplierList };
 }

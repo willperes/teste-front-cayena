@@ -51,6 +51,8 @@ main {
 
   width: 100%;
   max-width: #{$screen-content-max-width};
+
+  min-height: 100%;
 }
 
 *,
