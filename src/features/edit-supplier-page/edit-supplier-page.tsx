@@ -1,7 +1,13 @@
 "use client";
 
 import styles from "./edit-supplier-page.module.scss";
-import { Button, CardBox, PageBox, PageHeader } from "@/components";
+import {
+  Button,
+  CardBox,
+  PageBox,
+  PageHeader,
+  PageLoadState,
+} from "@/components";
 import { useEditSupplierPage } from "./use-edit-supplier-page";
 import { GetSupplierByIdUseCase, GetSupplierByIdUseCaseImpl } from "@/domain";
 import { EditSupplierForm } from "./components/edit-supplier-form/edit-supplier-form";
@@ -15,10 +21,11 @@ export function EditSupplierPage({
   supplierID,
   getSupplierByIdUseCase = new GetSupplierByIdUseCaseImpl(),
 }: Props) {
-  const { formProps, submitButtonProps } = useEditSupplierPage({
-    getSupplierByIdUseCase,
-    supplierID,
-  });
+  const { formProps, submitButtonProps, isLoadingSupplier } =
+    useEditSupplierPage({
+      getSupplierByIdUseCase,
+      supplierID,
+    });
 
   return (
     <>
@@ -32,6 +39,7 @@ export function EditSupplierPage({
       />
       <PageBox>
         <CardBox>
+          {isLoadingSupplier ? <PageLoadState /> : null}
           <EditSupplierForm {...formProps} />
         </CardBox>
       </PageBox>

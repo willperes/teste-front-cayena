@@ -1,6 +1,6 @@
 "use client";
 
-import { CardBox, PageBox, PageHeader } from "@/components";
+import { CardBox, PageBox, PageHeader, PageLoadState } from "@/components";
 import { SupplierListTable } from "./components/supplier-list-table/supplier-list-table";
 
 export function SupplierListPage() {

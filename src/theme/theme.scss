@@ -1,6 +1,8 @@
 @import "./colors.scss";
 
 @mixin theme-colors {
+  --primary: #{$primary};
+
   --main-background: #{$light-main-background};
   --secondary-background: #{$light-secondary-background};
   --card-background: #{$light-card-background};

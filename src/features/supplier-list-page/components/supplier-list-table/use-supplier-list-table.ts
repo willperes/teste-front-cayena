@@ -8,7 +8,7 @@ type Props = {
 
 export function useSupplierListTable({ getSupplierListUseCase }: Props) {
   // TODO: handle loading;
-  const { data: supplierListData } = useFetch({
+  const { data: supplierListData, loading: isLoading } = useFetch({
     fetchFn: () => getSupplierListUseCase.execute(),
   });
 
@@ -18,5 +18,5 @@ export function useSupplierListTable({ getSupplierListUseCase }: Props) {
     router.push(`/edit-supplier/${supplierID}`);
   }
 
-  return { supplierList: supplierListData, navigateToEditSupplier };
+  return { supplierList: supplierListData, isLoading, navigateToEditSupplier };
 }

@@ -1,0 +1,20 @@
+.container {
+  position: absolute;
+  inset: 0;
+
+  height: 100%;
+  width: 100%;
+  background-color: var(--main-background);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 0.7;
+  z-index: 100;
+}
+
+.spinner {
+  border-color: color-mix(in srgb, var(--primary), transparent 50%);
+  border-top-color: var(--primary);
+}
