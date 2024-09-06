@@ -13,7 +13,7 @@ function _formatLengthMessage(type: "min" | "max", length: number): string {
 export const FormErrorMessages = {
   required: "This field is required",
   invalidCnpj: "Insert a valid CNPJ",
-  invalidPhoneNumber: "Insert a valida phone number",
+  invalidPhoneNumber: "Insert a valid phone number",
   invalidEmail: "Insert a valid e-mail",
   invalidAddressState: "Insert a valid state",
   invalidZipCode: "Insert a valid Zip Code",

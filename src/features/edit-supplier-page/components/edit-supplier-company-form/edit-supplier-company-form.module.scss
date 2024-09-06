@@ -1,0 +1,27 @@
+.grid--gap {
+  gap: var(--space-16);
+}
+
+.main-grid {
+  @extend .grid--gap;
+  display: grid;
+  grid-template-columns: 1fr;
+
+  @include md {
+    grid-template-columns: 3fr 2fr;
+  }
+}
+
+.phone-grid {
+  @extend .grid--gap;
+  display: grid;
+  grid-template-columns: 1fr;
+
+  @include md {
+    grid-template-columns: 2fr 4fr;
+  }
+
+  @include lg {
+    grid-template-columns: 1fr 3fr;
+  }
+}

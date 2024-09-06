@@ -3,11 +3,11 @@ import { extractDigits } from "./extract-digits";
 const PHONE_REGEX = /(\d{2})(\d{4})(\d{4})/;
 const CELLPHONE_REGEX = /(\d{2})(\d{5})(\d{4})/;
 
-export function removeFormatting(value: string) {
+function removeFormatting(value: string) {
   return extractDigits(value);
 }
 
-export function format(value: string) {
+function format(value: string) {
   const cleanPhone = removeFormatting(value);
 
   if (cleanPhone.length === 11) {
@@ -19,4 +19,5 @@ export function format(value: string) {
 
 export const phoneNumberUtils = {
   removeFormatting,
+  format,
 };

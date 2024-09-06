@@ -1,13 +1,16 @@
 import { Controller, FieldValues, UseControllerProps } from "react-hook-form";
 import { TextInput, TextInputProps } from "../text-input/text-input";
 
-type Props<FormType extends FieldValues> = TextInputProps &
+type Props<FormType extends FieldValues> = {
+  formatFn?: (value: string) => string;
+} & TextInputProps &
   UseControllerProps<FormType>;
 
 export function FormTextInput<FormType extends FieldValues>({
   control,
   name,
   rules,
+  formatFn,
   ...textInputProps
 }: Props<FormType>) {
   return (
@@ -17,8 +20,9 @@ export function FormTextInput<FormType extends FieldValues>({
       rules={rules}
       render={({ field, fieldState }) => (
         <TextInput
-          value={field.value}
+          value={field.value && formatFn ? formatFn(field.value) : field.value}
           onChange={field.onChange}
+          onBlur={field.onBlur}
           errorMessage={fieldState.error?.message}
           {...textInputProps}
         />

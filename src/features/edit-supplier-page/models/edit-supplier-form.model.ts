@@ -22,3 +22,5 @@ export const EditSupplierFormModel = z.object({
   addressState: addressValidators.state,
   addressZipCode: addressValidators.zipCode,
 });
+
+export type IEditSupplierFormModel = z.infer<typeof EditSupplierFormModel>;

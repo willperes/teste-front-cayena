@@ -3,6 +3,7 @@
 import { CardBox, PageBox, PageHeader } from "@/components";
 import { useEditSupplierPage } from "./use-edit-supplier-page";
 import { GetSupplierByIdUseCase, GetSupplierByIdUseCaseImpl } from "@/domain";
+import { EditSupplierForm } from "./components/edit-supplier-form/edit-supplier-form";
 
 type Props = {
   supplierID: string;
@@ -20,7 +21,7 @@ export function EditSupplierPage({
       <PageHeader title={"Edit Supplier"} />
       <PageBox>
         <CardBox>
-          <h1>Supplier: {supplierID}</h1>
+          <EditSupplierForm />
         </CardBox>
       </PageBox>
     </>
