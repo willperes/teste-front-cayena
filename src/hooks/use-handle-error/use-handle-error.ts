@@ -10,29 +10,26 @@ type HandleErrorArgs = {
 export function useHandleError() {
   const router = useRouter();
 
-  const handleError = useCallback(
-    (error: any, { errorMessage }: HandleErrorArgs) => {
-      let shouldRedirect = false;
-      if (error instanceof HttpError) {
-        shouldRedirect = error.statusCode === 401;
-      } else {
-        shouldRedirect = error?.response?.status === 401;
-      }
+  const handleError = useCallback((error: any, args?: HandleErrorArgs) => {
+    let shouldRedirect = false;
+    if (error instanceof HttpError) {
+      shouldRedirect = error.statusCode === 401;
+    } else {
+      shouldRedirect = error?.response?.status === 401;
+    }
 
-      if (shouldRedirect) {
-        toast("Your session has expired, please sign in again.", {
-          type: "error",
-        });
-        router.replace("/login");
-        return;
-      }
+    if (shouldRedirect) {
+      toast("Your session has expired, please sign in again.", {
+        type: "error",
+      });
+      router.replace("/login");
+      return;
+    }
 
-      if (errorMessage) {
-        toast(errorMessage, { type: "error" });
-      }
-    },
-    []
-  );
+    if (args?.errorMessage) {
+      toast(args?.errorMessage, { type: "error" });
+    }
+  }, []);
 
   return {
     handleError,
