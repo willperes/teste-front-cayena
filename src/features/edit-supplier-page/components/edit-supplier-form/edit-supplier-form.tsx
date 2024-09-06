@@ -5,7 +5,11 @@ import { EditSupplierCompanyForm } from "../edit-supplier-company-form/edit-supp
 import { EditSupplierOwnerForm } from "../edit-supplier-owner-form/edit-supplier-owner-form";
 import { useEditSupplierForm } from "./use-edit-supplier-form";
 import { EditSupplierAddressForm } from "../edit-supplier-address-form/edit-supplier-address-form";
-import { DetailedSupplier } from "@/domain";
+import {
+  DetailedSupplier,
+  UpdateSupplierUseCase,
+  UpdateSupplierUseCaseImpl,
+} from "@/domain";
 import { forwardRef, useImperativeHandle } from "react";
 
 export type EditSupplierFormRef = {
@@ -14,14 +18,24 @@ export type EditSupplierFormRef = {
 
 type Props = {
   supplier?: DetailedSupplier;
+  updateSupplierUseCase?: UpdateSupplierUseCase;
   onFormValidStatusChange: (isValid: boolean) => void;
   onFormSubmitting: (isSubmitting: boolean) => void;
 };
 
 export const EditSupplierForm = forwardRef<EditSupplierFormRef, Props>(
-  ({ supplier, onFormValidStatusChange, onFormSubmitting }, ref) => {
+  (
+    {
+      supplier,
+      updateSupplierUseCase = new UpdateSupplierUseCaseImpl(),
+      onFormValidStatusChange,
+      onFormSubmitting,
+    },
+    ref
+  ) => {
     const { control, handleSubmit } = useEditSupplierForm({
       supplier,
+      updateSupplierUseCase,
       onFormValidStatusChange,
       onFormSubmitting,
     });

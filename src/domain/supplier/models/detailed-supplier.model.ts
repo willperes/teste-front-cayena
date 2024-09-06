@@ -6,6 +6,7 @@ import { SupplierInformation } from "./supplier-information.model";
 import { SupplierOwner } from "./supplier-owner.model";
 
 export type DetailedSupplier = SupplierInformation & {
+  id: string;
   address: SupplierAddress;
   owner: SupplierOwner;
 };
@@ -13,6 +14,7 @@ export type DetailedSupplier = SupplierInformation & {
 export namespace DetailedSupplier {
   export function fromDTO(dto: DetailedSupplierDTO): DetailedSupplier {
     return {
+      id: dto.publicId,
       name: dto.name,
       cnpj: cnpjUtils.format(dto.cnpj),
       phoneNumber: phoneNumberUtils.format(dto.phoneNumber),

@@ -1,7 +1,6 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
 import { HttpClient, HttpRequest, HttpResponse } from "../http/http-client";
 import { HttpError } from "../http";
-// import { getSession } from "next-auth/react";
 
 export class AxiosHttpClientAdapter implements HttpClient {
   private _formatResponse(response: AxiosResponse): HttpResponse {
