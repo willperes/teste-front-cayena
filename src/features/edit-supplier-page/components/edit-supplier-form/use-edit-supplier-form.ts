@@ -14,6 +14,7 @@ import { cnpjUtils, phoneNumberUtils, zipCodeUtils } from "@/utils";
 import { UpdateSupplierUseCase } from "../../../../domain/supplier/use-cases/update-supplier.use-case";
 import { useRouter } from "next/navigation";
 import { useHandleError } from "@/hooks";
+import { toast } from "react-toastify";
 
 type Props = {
   supplier?: DetailedSupplier;
@@ -91,6 +92,7 @@ export function useEditSupplierForm({
       const parsedDTO = UpdateSupplierDTO.parse(dto);
       await updateSupplierUseCase.execute(parsedDTO);
 
+      toast("The supplier was edited successfuly.", { type: "success" });
       router.replace("/");
     } catch (error) {
       handleError(error, {
@@ -110,7 +112,7 @@ export function useEditSupplierForm({
 
   useEffect(() => {
     onFormValidStatusChange(formState.isValid);
-  }, [formState.isValid]);
+  }, [onFormValidStatusChange, formState.isValid]);
 
   return {
     control,

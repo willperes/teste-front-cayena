@@ -1,4 +1,45 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is my result for the challenge proposed for the Mid-level Developer role.
+
+## More about the project
+
+In this project I applied some architectural principles to make sure that the code could organized and that it could be tested with ease. Some of the principles applied:
+
+- Dependency injection.
+- Factory pattern.
+- Domain layer.
+- Folder by feature.
+
+## Folder structure
+
+```shell
+src/
+|-- assets/
+|   |-- icons/
+|-- components/
+|   |-- layout/
+|   |-- ui/
+|-- domain/
+|   |-- X/
+|   |   |-- dtos
+|   |   |-- models
+|   |   |-- use-cases
+|-- features/
+|   |-- X-page/
+|   |   |-- components
+|   |   |-- models
+|   |   |-- X-page.module.scss
+|   |   |-- X-page.tsx
+|   |   |-- use-X-page.ts
+|-- hooks/
+|   |-- use-X/
+|-- infra/
+|   |-- adapters/
+|   |-- http/
+|-- pages/
+|-- providers/
+|-- theme/
+|-- utils/
+```
 
 ## Getting Started
 
@@ -16,25 +57,19 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Screenshots
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+<div style="flex-direction: row;">
+  <img src="https://i.imgur.com/NKwImj4.png" height="500" />
+  <img src="https://i.imgur.com/Apqu1a1.png" height="500" />
+</div>
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+<div style="flex-direction: row;">
+  <img src="https://i.imgur.com/Zv82dUQ.png" height="500" />
+  <img src="https://i.imgur.com/aXSZZfI.png" height="500" />
+</div>
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<div style="flex-direction: row;">
+  <img src="https://i.imgur.com/tRreUj6.png" height="500" />
+  <img src="https://i.imgur.com/l7P6HuM.png" height="500" />
+</div>
