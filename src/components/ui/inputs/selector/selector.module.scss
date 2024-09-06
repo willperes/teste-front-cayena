@@ -5,15 +5,15 @@
   align-items: center;
 }
 
-.box__input {
+.box__selector {
   @include input-style;
 }
 
-.box__input--error {
+.box__selector--error {
   @include input-style--error;
 }
 
-.box__input--trailing-component {
+.box__selector--trailing-component {
   padding-right: var(--space-32);
 }
 

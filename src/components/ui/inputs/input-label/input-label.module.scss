@@ -1,0 +1,8 @@
+.label {
+  @extend .text--sm;
+  font-weight: 500;
+
+  &--required {
+    color: var(--error);
+  }
+}

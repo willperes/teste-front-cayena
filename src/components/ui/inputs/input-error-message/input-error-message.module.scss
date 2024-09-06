@@ -1,0 +1,4 @@
+.error-message {
+  @extend .text--xs;
+  color: var(--error);
+}

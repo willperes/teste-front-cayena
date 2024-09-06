@@ -2,6 +2,8 @@
 
 import { useId, useRef } from "react";
 import styles from "./text-input.module.scss";
+import { InputLabel } from "../input-label/input-label";
+import { InputErrorMessage } from "../input-error-message/input-error-message";
 
 export type TextInputProps = {
   label?: string;
@@ -13,7 +15,7 @@ export type TextInputProps = {
 export function TextInput({
   label,
   id,
-  required,
+  required = false,
   errorMessage,
   TrailingComponent,
   ...inputProps
@@ -30,12 +32,7 @@ export function TextInput({
   return (
     <div>
       {label ? (
-        <label htmlFor={_id} className={styles.label}>
-          {label}{" "}
-          {required ? (
-            <span className={styles["label--required"]}>*</span>
-          ) : null}
-        </label>
+        <InputLabel label={label} htmlFor={_id} required={required} />
       ) : null}
       <div className={styles.box}>
         <input id={_id} {...inputProps} className={inputClasses.join(" ")} />
@@ -45,9 +42,7 @@ export function TextInput({
           </div>
         ) : null}
       </div>
-      {errorMessage ? (
-        <span className={styles["error-message"]}>{errorMessage}</span>
-      ) : null}
+      {errorMessage ? <InputErrorMessage errorMessage={errorMessage} /> : null}
     </div>
   );
 }

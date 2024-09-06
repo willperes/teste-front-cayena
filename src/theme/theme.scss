@@ -21,3 +21,20 @@
 
   --error: #{$error};
 }
+
+@mixin input-style {
+  background-color: var(--input-background);
+  height: 40px;
+  width: 100%;
+
+  @include text-primary;
+
+  border: 1px solid var(--input-border);
+  border-radius: var(--border-radius-4);
+
+  padding: 0 var(--space-12) 0 var(--space-12);
+}
+
+@mixin input-style--error {
+  border: 2px solid var(--error);
+}

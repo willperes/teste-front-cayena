@@ -4,6 +4,7 @@ import { Divider } from "@/components";
 import { EditSupplierCompanyForm } from "../edit-supplier-company-form/edit-supplier-company-form";
 import { EditSupplierOwnerForm } from "../edit-supplier-owner-form/edit-supplier-owner-form";
 import { useEditSupplierForm } from "./use-edit-supplier-form";
+import { EditSupplierAddressForm } from "../edit-supplier-address-form/edit-supplier-address-form";
 
 export function EditSupplierForm() {
   const { control } = useEditSupplierForm();
@@ -13,6 +14,8 @@ export function EditSupplierForm() {
       <EditSupplierCompanyForm control={control} />
       <Divider />
       <EditSupplierOwnerForm control={control} />
+      <Divider />
+      <EditSupplierAddressForm control={control} />
     </form>
   );
 }

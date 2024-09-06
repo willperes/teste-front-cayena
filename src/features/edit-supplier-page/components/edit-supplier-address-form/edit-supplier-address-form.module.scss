@@ -1,0 +1,29 @@
+.gap {
+  gap: var(--space-16);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  @extend .gap;
+}
+
+.main-grid {
+  @extend .gap;
+  display: grid;
+  grid-template-columns: 1fr;
+
+  @include md {
+    grid-template-columns: 3fr 1fr 1fr;
+  }
+}
+
+.secondary-grid {
+  @extend .gap;
+  display: grid;
+  grid-template-columns: 1fr;
+
+  @include md {
+    grid-template-columns: 1fr 2fr 1fr 1fr;
+  }
+}

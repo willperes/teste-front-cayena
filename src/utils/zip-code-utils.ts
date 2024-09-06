@@ -9,7 +9,12 @@ function validate(zipCode: string) {
 }
 
 function format(zipCode: string) {
-  return removeFormatting(zipCode).replace(/(\d{5})(\d{3})/, "$1-$2");
+  const cleanZipCode = removeFormatting(zipCode);
+  if (cleanZipCode.length > 8) {
+    return cleanZipCode.slice(0, 8).replace(/(\d{5})(\d{3})/, "$1-$2");
+  }
+
+  return cleanZipCode.replace(/(\d{5})(\d{3})/, "$1-$2");
 }
 
 export const zipCodeUtils = {
