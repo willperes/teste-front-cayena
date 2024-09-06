@@ -1,6 +1,7 @@
 "use client";
 
-import { CardBox, PageBox, PageHeader } from "@/components";
+import styles from "./edit-supplier-page.module.scss";
+import { Button, CardBox, PageBox, PageHeader } from "@/components";
 import { useEditSupplierPage } from "./use-edit-supplier-page";
 import { GetSupplierByIdUseCase, GetSupplierByIdUseCaseImpl } from "@/domain";
 import { EditSupplierForm } from "./components/edit-supplier-form/edit-supplier-form";
@@ -14,17 +15,24 @@ export function EditSupplierPage({
   supplierID,
   getSupplierByIdUseCase = new GetSupplierByIdUseCaseImpl(),
 }: Props) {
-  const { supplierData } = useEditSupplierPage({
+  const { formProps, submitButtonProps } = useEditSupplierPage({
     getSupplierByIdUseCase,
     supplierID,
   });
 
   return (
     <>
-      <PageHeader title={"Edit Supplier"} />
+      <PageHeader
+        title={"Edit Supplier"}
+        TrailingComponent={
+          <div className={styles["submit-button-box"]}>
+            <Button title={"Submit"} {...submitButtonProps} />
+          </div>
+        }
+      />
       <PageBox>
         <CardBox>
-          <EditSupplierForm supplier={supplierData} />
+          <EditSupplierForm {...formProps} />
         </CardBox>
       </PageBox>
     </>

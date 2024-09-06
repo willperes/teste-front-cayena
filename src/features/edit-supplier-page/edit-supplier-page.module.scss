@@ -1,0 +1,7 @@
+.submit-button-box {
+  width: 100%;
+
+  @include sm {
+    width: 150px;
+  }
+}

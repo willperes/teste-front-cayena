@@ -6,20 +6,44 @@ import { EditSupplierOwnerForm } from "../edit-supplier-owner-form/edit-supplier
 import { useEditSupplierForm } from "./use-edit-supplier-form";
 import { EditSupplierAddressForm } from "../edit-supplier-address-form/edit-supplier-address-form";
 import { DetailedSupplier } from "@/domain";
+import { forwardRef, useImperativeHandle } from "react";
+
+export type EditSupplierFormRef = {
+  submitForm: () => void;
+};
 
 type Props = {
   supplier?: DetailedSupplier;
+  onFormValidStatusChange: (isValid: boolean) => void;
+  onFormSubmitting: (isSubmitting: boolean) => void;
 };
-export function EditSupplierForm({ supplier }: Props) {
-  const { control } = useEditSupplierForm({ supplier });
 
-  return (
-    <form className={styles.form}>
-      <EditSupplierCompanyForm control={control} />
-      <Divider />
-      <EditSupplierOwnerForm control={control} />
-      <Divider />
-      <EditSupplierAddressForm control={control} />
-    </form>
-  );
-}
+export const EditSupplierForm = forwardRef<EditSupplierFormRef, Props>(
+  ({ supplier, onFormValidStatusChange, onFormSubmitting }, ref) => {
+    const { control, handleSubmit } = useEditSupplierForm({
+      supplier,
+      onFormValidStatusChange,
+      onFormSubmitting,
+    });
+
+    useImperativeHandle(
+      ref,
+      (): EditSupplierFormRef => ({
+        submitForm: () => {
+          handleSubmit();
+        },
+      }),
+      [handleSubmit]
+    );
+
+    return (
+      <form className={styles.form}>
+        <EditSupplierCompanyForm control={control} />
+        <Divider />
+        <EditSupplierOwnerForm control={control} />
+        <Divider />
+        <EditSupplierAddressForm control={control} />
+      </form>
+    );
+  }
+);

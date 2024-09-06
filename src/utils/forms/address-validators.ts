@@ -12,6 +12,7 @@ const state = z
 
 const zipCode = z
   .string({ required_error: FormErrorMessages.required })
+  .transform((value) => value.replace(/\D/g, ""))
   .refine(
     (zipCode) => zipCodeUtils.validate(zipCode),
     FormErrorMessages.invalidZipCode

@@ -7,16 +7,24 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { DetailedSupplier } from "@/domain";
 import { useEffect } from "react";
 import { cnpjUtils, phoneNumberUtils, zipCodeUtils } from "@/utils";
+import { toast } from "react-toastify";
 
 type Props = {
   supplier?: DetailedSupplier;
+  onFormValidStatusChange: (isValid: boolean) => void;
+  onFormSubmitting: (isSubmitting: boolean) => void;
 };
 
-export function useEditSupplierForm({ supplier }: Props) {
-  const { control, setValue, trigger } = useForm<IEditSupplierFormModel>({
-    mode: "onChange",
-    resolver: zodResolver(EditSupplierFormModel),
-  });
+export function useEditSupplierForm({
+  supplier,
+  onFormValidStatusChange,
+  onFormSubmitting,
+}: Props) {
+  const { control, formState, handleSubmit, setValue, trigger } =
+    useForm<IEditSupplierFormModel>({
+      mode: "onChange",
+      resolver: zodResolver(EditSupplierFormModel),
+    });
 
   function handleInitialData(supplier: DetailedSupplier) {
     const mappedFormValues: Record<keyof IEditSupplierFormModel, string> = {
@@ -46,13 +54,31 @@ export function useEditSupplierForm({ supplier }: Props) {
     trigger();
   }
 
+  function onFormSubmit(formValues: IEditSupplierFormModel) {
+    try {
+      onFormSubmitting(true);
+    } catch (error) {
+      toast(
+        "An error occurred while trying to update the supplier, please try again.",
+        { type: "error" }
+      );
+    } finally {
+      onFormSubmitting(false);
+    }
+  }
+
   useEffect(() => {
     if (supplier) {
       handleInitialData(supplier);
     }
   }, [supplier]);
 
+  useEffect(() => {
+    onFormValidStatusChange(formState.isValid);
+  }, [formState.isValid]);
+
   return {
     control,
+    handleSubmit: handleSubmit(onFormSubmit),
   };
 }
