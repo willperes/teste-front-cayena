@@ -1,5 +1,10 @@
 import { IAuthenticationResponseDTO, SubmitLogInDTO } from "@/domain";
-import { requestURL, httpClientFactory, HttpClient, HttpError } from "@/infra";
+import {
+  authRequestURL,
+  httpClientFactory,
+  HttpClient,
+  HttpError,
+} from "@/infra";
 import { NextApiRequest, NextApiResponse } from "next";
 import { serialize } from "cookie";
 
@@ -26,7 +31,7 @@ export default async function handler(
   try {
     const result = await httpClient
       .request<IAuthenticationResponseDTO>({
-        url: requestURL.fetchToken,
+        url: authRequestURL.fetchToken,
         body: req.body,
         method: "post",
         headers: {

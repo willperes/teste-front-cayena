@@ -1,10 +1,10 @@
 const _baseURL = "https://test-case.cayena.io/";
-function _makeBaseURL(path: string): string {
+export function makeBaseURL(path: string): string {
   return _baseURL + path;
 }
 
-export const requestURL = {
-  fetchToken: _makeBaseURL("oauth/token"),
+export const authRequestURL = {
+  fetchToken: makeBaseURL("oauth/token"),
 };
 
 const _localAPIURL = "/api/";
@@ -14,4 +14,12 @@ function _makeLocalURL(path: string): string {
 
 export const localRequestURL = {
   authenticateUser: _makeLocalURL("login"),
+};
+
+function _makeProxyURL(path: string): string {
+  return _makeLocalURL("proxy/" + path);
+}
+
+export const requestURL = {
+  fetchSupplierList: _makeProxyURL("suppliers"),
 };

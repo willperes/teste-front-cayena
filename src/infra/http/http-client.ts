@@ -6,9 +6,11 @@ export type HttpAuth = {
   password: string;
 };
 
+export type HttpMethod = "get" | "post" | "put" | "delete";
+
 export type HttpRequest = {
   url: string;
-  method: "get" | "post" | "put" | "delete";
+  method: HttpMethod;
   body?: any;
   headers?: any;
   auth?: HttpAuth;
