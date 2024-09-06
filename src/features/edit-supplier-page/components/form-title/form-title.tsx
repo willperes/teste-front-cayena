@@ -3,5 +3,9 @@ type Props = {
 };
 
 export function FormTitle({ title }: Props) {
-  return <h2 className={"text--2xl"}>{title}</h2>;
+  return (
+    <h2 className={"text--2xl"} style={{ fontWeight: 600 }}>
+      {title}
+    </h2>
+  );
 }

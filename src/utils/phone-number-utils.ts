@@ -10,6 +10,10 @@ function removeFormatting(value: string) {
 function format(value: string) {
   const cleanPhone = removeFormatting(value);
 
+  if (cleanPhone.length > 11) {
+    return cleanPhone.slice(0, 11).replace(CELLPHONE_REGEX, "($1) $2-$3");
+  }
+
   if (cleanPhone.length === 11) {
     return cleanPhone.replace(CELLPHONE_REGEX, "($1) $2-$3");
   }

@@ -13,6 +13,14 @@ export function FormTextInput<FormType extends FieldValues>({
   formatFn,
   ...textInputProps
 }: Props<FormType>) {
+  function handleOnChange(value: string, onChangeFn: (value: string) => void) {
+    if (value && formatFn) {
+      return onChangeFn(formatFn(value));
+    }
+
+    return onChangeFn(value);
+  }
+
   return (
     <Controller
       control={control}
@@ -20,8 +28,10 @@ export function FormTextInput<FormType extends FieldValues>({
       rules={rules}
       render={({ field, fieldState }) => (
         <TextInput
-          value={field.value && formatFn ? formatFn(field.value) : field.value}
-          onChange={field.onChange}
+          value={field.value}
+          onChange={(value) =>
+            handleOnChange(value.target.value, field.onChange)
+          }
           onBlur={field.onBlur}
           errorMessage={fieldState.error?.message}
           {...textInputProps}

@@ -1,12 +1,18 @@
+import styles from "./edit-supplier-form.module.scss";
+
+import { Divider } from "@/components";
 import { EditSupplierCompanyForm } from "../edit-supplier-company-form/edit-supplier-company-form";
+import { EditSupplierOwnerForm } from "../edit-supplier-owner-form/edit-supplier-owner-form";
 import { useEditSupplierForm } from "./use-edit-supplier-form";
 
 export function EditSupplierForm() {
   const { control } = useEditSupplierForm();
 
   return (
-    <div>
+    <form className={styles.form}>
       <EditSupplierCompanyForm control={control} />
-    </div>
+      <Divider />
+      <EditSupplierOwnerForm control={control} />
+    </form>
   );
 }
