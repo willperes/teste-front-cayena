@@ -2,12 +2,7 @@ import { FormTextInput, Selector } from "@/components";
 import styles from "./edit-supplier-address-form.module.scss";
 import { Control, Controller } from "react-hook-form";
 import { IEditSupplierFormModel } from "../../models/edit-supplier-form.model";
-import {
-  BRAZIL_STATES,
-  cnpjUtils,
-  phoneNumberUtils,
-  zipCodeUtils,
-} from "@/utils";
+import { BRAZIL_STATES, zipCodeUtils } from "@/utils";
 import { FormTitle } from "../form-title/form-title";
 
 type Props = {

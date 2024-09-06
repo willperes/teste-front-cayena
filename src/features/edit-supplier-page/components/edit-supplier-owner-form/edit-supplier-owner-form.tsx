@@ -2,7 +2,7 @@ import { FormTextInput } from "@/components";
 import styles from "./edit-supplier-owner-form.module.scss";
 import { Control } from "react-hook-form";
 import { IEditSupplierFormModel } from "../../models/edit-supplier-form.model";
-import { cnpjUtils, phoneNumberUtils } from "@/utils";
+import { phoneNumberUtils } from "@/utils";
 import { FormTitle } from "../form-title/form-title";
 
 type Props = {

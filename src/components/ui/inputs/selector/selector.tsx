@@ -5,6 +5,7 @@ import styles from "./selector.module.scss";
 import { InputLabel } from "../input-label/input-label";
 import { InputErrorMessage } from "../input-error-message/input-error-message";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type TConstraint = Record<string, any>;
 export type SelectorProps<T> = {
   label?: string;
