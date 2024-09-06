@@ -18,6 +18,7 @@
       "@/components": ["./src/components"],
       "@/domain": ["./src/domain"],
       "@/features": ["./src/features"],
+      "@/hooks": ["./src/hooks"],
       "@/infra": ["./src/infra"],
       "@/pages": ["./src/pages"],
       "@/theme": ["./src/theme"],

@@ -22,4 +22,5 @@ function _makeProxyURL(path: string): string {
 
 export const requestURL = {
   fetchSupplierList: _makeProxyURL("suppliers"),
+  fetchSupplierById: _makeProxyURL("suppliers/{{id}}"),
 };
