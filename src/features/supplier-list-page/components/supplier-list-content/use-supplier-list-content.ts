@@ -1,12 +1,12 @@
-import { GetSupplierListUseCase } from "../../../../domain/supplier/use-cases/get-supplier-list.use-case";
-import { useRouter } from "next/navigation";
+import { GetSupplierListUseCase } from "@/domain";
 import { useFetch } from "@/hooks";
+import { useRouter } from "next/navigation";
 
 type Props = {
   getSupplierListUseCase: GetSupplierListUseCase;
 };
 
-export function useSupplierListTable({ getSupplierListUseCase }: Props) {
+export function useSupplierListContent({ getSupplierListUseCase }: Props) {
   // TODO: handle loading;
   const { data: supplierListData, loading: isLoading } = useFetch({
     fetchFn: () => getSupplierListUseCase.execute(),
@@ -18,5 +18,11 @@ export function useSupplierListTable({ getSupplierListUseCase }: Props) {
     router.push(`/edit-supplier/${supplierID}`);
   }
 
-  return { supplierList: supplierListData, isLoading, navigateToEditSupplier };
+  return {
+    isLoading: isLoading || !supplierListData,
+    contentProps: {
+      navigateToEditSupplier,
+    },
+    supplierList: supplierListData,
+  };
 }

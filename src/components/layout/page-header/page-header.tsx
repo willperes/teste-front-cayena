@@ -3,7 +3,7 @@ import styles from "./page-header.module.scss";
 import { Icon } from "@/components";
 
 type Props = {
-  title: string;
+  title?: string;
   TrailingComponent?: React.ReactElement;
 };
 
@@ -26,7 +26,7 @@ export function PageHeader({ title, TrailingComponent }: Props) {
   return (
     <header className={styles.container}>
       <div className={styles["container__header-box"]}>
-        <h1>{title}</h1>
+        {title ? <h1>{title}</h1> : <div />}
         {!mdUp ? <ThemeToggleButton /> : null}
       </div>
 

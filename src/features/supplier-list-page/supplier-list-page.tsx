@@ -1,7 +1,7 @@
 "use client";
 
-import { CardBox, PageBox, PageHeader, PageLoadState } from "@/components";
-import { SupplierListTable } from "./components/supplier-list-table/supplier-list-table";
+import { CardBox, PageBox, PageHeader } from "@/components";
+import { SupplierListContent } from "./components/supplier-list-content/supplier-list-content";
 
 export function SupplierListPage() {
   return (
@@ -9,7 +9,7 @@ export function SupplierListPage() {
       <PageHeader title={"Suppliers"} />
       <PageBox>
         <CardBox>
-          <SupplierListTable />
+          <SupplierListContent />
         </CardBox>
       </PageBox>
     </>

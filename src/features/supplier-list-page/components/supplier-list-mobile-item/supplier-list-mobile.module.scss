@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: var(--space-16);
+}
+
+.container__button-box {
+  min-width: 80px;
+}
+
+.container__inner-box {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.inner-box__supplier-name-text {
+  @extend .text--lg;
+  font-weight: 600;
+}
+
+.inner-box__supplier-secondary-text {
+  @extend .text--sm;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
