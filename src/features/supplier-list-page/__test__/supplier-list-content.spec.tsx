@@ -52,7 +52,7 @@ describe("<SupplierListContent />", () => {
     );
 
     const buttonElements = await findAllByTestId(
-      "supplier-list-mobile-item__edit-button"
+      "supplier-list-item__edit-button"
     );
     expect(buttonElements.length).toEqual(1);
 
