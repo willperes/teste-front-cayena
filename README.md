@@ -9,6 +9,10 @@ In this project I applied some architectural principles to make sure that the co
 - Domain layer.
 - Folder by feature.
 
+One challenge that I think was very interesting was that I had to create a proxy to handle the HttpOnly cookie that contained the accessToken, so I could inject the token onto the request before sending it to the server. This way I could provide more security to the application, preventing attacks that would have access to this token and compromise the user's account.
+
+Check it out now: <a target="_blank">https://teste-front-cayena.vercel.app/</a>
+
 ## Folder structure
 
 ```shell
